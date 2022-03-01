@@ -131,6 +131,7 @@ public class MovieCollection
       listToSort.set(possibleIndex, temp);
     }
   }
+
   
   private void displayMovieInfo(Movie movie)
   {
@@ -148,7 +149,38 @@ public class MovieCollection
   
   private void searchCast()
   {
-    
+    ArrayList<String> actors = new ArrayList<>();
+    System.out.println("Enter a person to search for (first or last name: ");
+    String word = scanner.nextLine().toLowerCase();
+    int counter = 1;
+    for (int i = 0; i < movies.size(); i++)
+    {
+      String[] actor = movies.get(i).getCast().split("\\|");
+      for (String cast : actor)
+      {
+        actors.add(cast);
+      }
+    }
+    for (int j = 1; j < actors.size(); j++)
+    {
+      String temp = actors.get(j);
+
+      int possibleIndex = j;
+      while (possibleIndex > 0 && temp.compareTo(actors.get(possibleIndex - 1)) < 0)
+      {
+        actors.set(possibleIndex, actors.get(possibleIndex - 1));
+        possibleIndex--;
+      }
+      actors.set(possibleIndex, temp);
+    }
+    ArrayList<String>
+    for (int j = 0; j < actors.size(); j++)
+    {
+      if (actors.get(j).toLowerCase().contains(word))
+      {
+
+      }
+    }
   }
 
   private void searchKeywords()
