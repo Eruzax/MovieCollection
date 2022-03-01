@@ -51,33 +51,15 @@ public class MovieCollection
   
   private void processOption(String option)
   {
-    if (option.equals("t"))
+    switch (option)
     {
-      searchTitles();
-    }
-    else if (option.equals("c"))
-    {
-      searchCast();
-    }
-    else if (option.equals("k"))
-    {
-      searchKeywords();
-    }
-    else if (option.equals("g"))
-    {
-      listGenres();
-    }
-    else if (option.equals("r"))
-    {
-      listHighestRated();
-    }
-    else if (option.equals("h"))
-    {
-      listHighestRevenue();
-    }
-    else
-    {
-      System.out.println("Invalid choice!");
+      case "t" -> searchTitles();
+      case "c" -> searchCast();
+      case "k" -> searchKeywords();
+      case "g" -> listGenres();
+      case "r" -> listHighestRated();
+      case "h" -> listHighestRevenue();
+      default -> System.out.println("Invalid choice!");
     }
   }
 
@@ -166,29 +148,7 @@ public class MovieCollection
   
   private void searchCast()
   {
-    ArrayList<String> castList = new ArrayList<>();
-    ArrayList<Movie> movieList = new ArrayList<>();
-
-    System.out.println("Enter a person to search for (first ot last name): ");
-    String word = scanner.nextLine();
-    int counter = 1;
-    for(int i = 0; i < movies.size(); i++)
-    {
-      if(movies.get(i).getCast().toLowerCase().contains(word.toLowerCase()))
-      {
-        movieList.add(movies.get(i));
-        castList.add(movies.get(i).getCast());
-      }
-    }
-    sortResults(movieList);
-    for(int j = 0; j < castList.size(); j++)
-    {
-      System.out.println(counter + ". " + movieList.get(j).getCast());
-      counter++;
-    }
-    System.out.println("Which movie would you like to learn more about?\nEnterNumber: ");
-    int choice = scanner.nextInt();
-    displayMovieInfo(movieList.get(choice));
+    
   }
 
   private void searchKeywords()
